@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net452;net48;net6</TargetFrameworks>
+    <LangVersion>10</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+
+    <Authors>Joris Patroons</Authors>
+    <Company>Jo Kruis</Company>
+    <Description>Collection of utility classes.</Description>
+    <Version Condition=" '$(Version)' == '' ">0.99.0</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>Jox.Utility</PackageId>
+    <PackageLicenseExpression>Unlicense</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Using Include="System.Text" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFrameworkIdentifier)' == '.NETFramework' ">
+    <!-- not referenced by default in .NET Framework -->
+    <Reference Include="System.IO.Compression" />
+    <!-- implicitly added but unavailable in .NET Framework without NuGet dependency -->
+    <Using Remove="System.Net.Http" />
+  </ItemGroup>
+
+</Project>
