@@ -18,7 +18,12 @@
     <Using Include="System.Text" />
   </ItemGroup>
 
+  <ItemGroup Condition=" '$(TargetFrameworkIdentifier)' == '.NETCoreApp' ">
+    <PackageReference Include="System.DirectoryServices" Version="6.0.0" />
+  </ItemGroup>
+
   <ItemGroup Condition=" '$(TargetFrameworkIdentifier)' == '.NETFramework' ">
+    <Reference Include="System.DirectoryServices" />
     <!-- not referenced by default in .NET Framework -->
     <Reference Include="System.IO.Compression" />
     <!-- implicitly added but unavailable in .NET Framework without NuGet dependency -->

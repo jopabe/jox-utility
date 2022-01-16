@@ -46,4 +46,11 @@ public static class ConsoleHelpers
 
         return pwd;
     }
+
+    public static void SetConsoleOutAnsiEncoding() => SetConsoleOutEncoding(Encoding.Default);
+    public static void SetConsoleOutEncoding(Encoding encoding)
+    {
+        var ansiWriter = new StreamWriter(Console.OpenStandardOutput(), encoding) { AutoFlush = true };
+        Console.SetOut(TextWriter.Synchronized(ansiWriter));
+    }
 }
